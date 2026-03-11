@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const episodes = [
   {
@@ -32,7 +32,7 @@ const episodes = [
     content: [
       { day: "人間ヤバすぎ問題", icon: "😤", original: "主は、地上に人の悪が増大し、心に思うことが常に悪いことだけを見て、後悔された。", gal: "人間たちが悪いことしすぎて、神様が「あ〜もう作らなきゃよかった」ってマジで後悔したの😤 神様ですら後悔するんだ...ってなるよね。でもノアだけは「この人ええやん」って思われてたから助かる話。" },
       { day: "神様のオーダー", icon: "📐", original: "あなたはゴフェルの木で箱舟を造りなさい。", gal: "神様がノアに「大洪水起こすから箱舟作って！サイズはこれで！」って超具体的な設計図を渡したの。神様からのDIY依頼案件🔨 しかも「動物も2匹ずつ乗せてね」という謎の条件付き。" },
-      { day: "乗船完了", icon: "🐘", original: "清い動物はすべて七つがい、清くない動物は一つがい、それぞれ乗り込んだ。", gal: "動物を全種類2匹ずつ集める作業、想像しただけで大変すぎない？🦁🐘🦒 ライオンも象もキリンも全部乗せた。カオスすぎて笑えない。船の中のにおいヤバそう笑" },
+      { day: "乗船完了", icon: "🐘", original: "清い動物はすべて七つがい、清くない動物は一つがい、それぞれ乗り込んだ。", gal: "動物を全種類2匹ずつ集める作業、想像しただけで大変すぎない？🦁🐘🦒 カオスすぎて笑えない。船の中のにおいヤバそう笑" },
       { day: "大洪水", icon: "🌊", original: "四十日の間、大地に雨が降り続いた。", gal: "40日間ずーっと雨！！山が全部沈むくらいの水量で、ノアの家族と動物たち以外みんなアウトに。これ映画だったら絶対ヒットするやつじゃん🌊 実際映画になってるけど。" },
       { day: "水が引く", icon: "🕊️", original: "ノアは鳩を放った。鳩はオリーブの葉をくわえて戻ってきた。", gal: "水が引いてきたか確認するために鳩を飛ばしたら、オリーブの葉っぱをくわえて帰ってきたの🕊️ これが「平和の鳩」の起源！知らなかった〜。ノアもガッツポーズしたと思う。" },
       { day: "虹との約束", icon: "🌈", original: "わたしは雲の中にわたしの虹を置く。これはわたしと大地の間の契約のしるしとなる。", gal: "最後に神様が「もう二度と大洪水はしないよ！その証拠に虹を置くね🌈」って約束したの。虹ってそんな深い意味あったの！？これ知ってから虹見るたびに泣きそうになるんだけど。" },
@@ -48,46 +48,81 @@ const episodes = [
       { day: "言語バラバラ作戦", icon: "🌐", original: "主はそこで彼らの言葉を混乱させ、彼らをそこから全地に散らされた。", gal: "神様の解決策→みんなの言語をバラバラにする！！突然言葉が通じなくなったら建設どころじゃないよね笑 これが世界中に違う言語がある理由らしくて、まじで知らなかった🌐" },
     ],
   },
+  {
+    id: 5, book: "マタイ福音書", title: "イエス誕生", emoji: "⭐", difficulty: "かんたん", verse: "マタイ 1〜2章",
+    sticker: "🎄奇跡", stickerColor: "#3b82f6",
+    content: [
+      { day: "天使がきた", icon: "👼", original: "主の使いが夢でヨセフに現れて言った。「マリアを妻として迎えることを恐れるな。」", gal: "マリアとヨセフって婚約中だったんだけど、マリアが突然「子供できた」ってなったの。ヨセフは「え？？？」ってなったけど、夢に天使が現れて「神様の子だから大丈夫！受け入れてあげて！」って言われたの。天使からの連絡より信用できる説😇" },
+      { day: "星が導く", icon: "⭐", original: "東方の博士たちが言った。「ユダヤ人の王としてお生まれになった方はどこにおられますか。わたしたちは東方でその方の星を見て、拝みに来たのです。」", gal: "遠い東の国から「星がめっちゃ輝いてる！これ絶対なんかある！」ってなった博士たちが、星を追いかけてはるばる会いに来たの。星ナビで目的地を探すやつ、2000年前にやってたじゃん⭐ しかも超豪華なプレゼント持参で笑" },
+      { day: "馬小屋で誕生", icon: "🐄", original: "マリアは男の子を産んだ。名前をイエスとつけた。", gal: "ベツレヘムに着いたら宿が全部満室で、仕方なく馬小屋で産むことに😭 え、神様の子の誕生が馬小屋って！？でも考えてみたら「どんな場所でも関係ない」っていうメッセージかもしれない✨ イエスって名前は「神は救われる」って意味らしいよ。" },
+      { day: "ヘロデ王がやばい", icon: "😈", original: "ヘロデは博士たちにだまされたと知り、ベツレヘムの二歳以下の男の子を皆殺しにした。", gal: "「新しい王が生まれた」って聞いたヘロデ王が超パニックになって、赤ちゃん全員に命令を出したの。権力者が自分の地位を守るためにやばいことするの、今も昔も変わらないんだね😢 でもイエスは天使の警告でエジプトに逃げて助かった。" },
+    ],
+  },
+  {
+    id: 6, book: "マタイ福音書", title: "イエスの奇跡", emoji: "✨", difficulty: "ちょいムズ", verse: "マタイ 8〜14章",
+    sticker: "🌊神がかり", stickerColor: "#06b6d4",
+    content: [
+      { day: "目の見えない人を治す", icon: "👁️", original: "イエスは彼らの目に触れて言われた。「あなたがたの信仰のとおりになれ。」すると目が開いた。", gal: "生まれつき目が見えない人たちがイエスに「助けてください！」って言ったら、イエスが目に触れて「信じた分だけ叶うよ」って言ったの。そしたら見えるようになったって😭 「信じた分だけ叶う」ってフレーズ、今のアファメーションと同じじゃん！！" },
+      { day: "5000人分の食事", icon: "🍞", original: "イエスはパン五つと魚二匹を取り、天を見上げて賛美の祈りを唱え、パンを裂いて弟子たちに渡された。五千人の男性が食べて満腹になった。", gal: "パン5個と魚2匹しかないのに5000人分に増やしたの🍞🐟 しかも食べきれなくて残ったって。神様のケータリング事業、スペックが高すぎる件。これ現代でやったらTikTokバズり確定じゃん笑" },
+      { day: "嵐を止める", icon: "🌊", original: "イエスは起き上がり、風と湖を叱りつけられた。すると、ひどい嵐がやんで、すっかり凪になった。", gal: "船で移動中に超大型台風みたいな嵐が来て弟子たちがパニックになったの。でもイエスは爆睡してて「え、起こすの？」って感じで起きて嵐に向かって「やめろ」って一言言ったら止まったって🌊 「やめろ」一言で嵐が止まる人間、強すぎる😂" },
+      { day: "水の上を歩く", icon: "🚶", original: "イエスは水の上を歩いて弟子たちのそばに来られた。", gal: "夜中に弟子たちが船で移動してたら、水の上を歩いてくる人影が！！全員「幽霊だ！！！」ってなったんだけど「俺だよ」ってイエスの声で😱 しかも弟子のペトロが「私も歩かせて！」って言ったら「おいで」って言われて実際歩けたの。信じてる間は歩けたけど怖くなったら沈んだって笑" },
+      { day: "死んだ人を生き返らせる", icon: "💫", original: "イエスは言われた。「タリタ、クム」（少女よ、起きなさい）。少女はすぐに起き上がって歩きだした。", gal: "死んだって言われてた12歳の女の子に「起きなさい」って言ったら起き上がったの😭 周りの人たちは「もう死んでるよ」って笑ってたんだけど、イエスは「寝てるだけ」って言い張って結果的に生き返らせた。信念がすごすぎる✨" },
+    ],
+  },
+  {
+    id: 7, book: "マタイ福音書", title: "イエスの復活", emoji: "🕊️", difficulty: "むずかしい", verse: "マタイ 26〜28章",
+    sticker: "😭エモすぎ", stickerColor: "#8b5cf6",
+    content: [
+      { day: "最後の晩餐", icon: "🍷", original: "イエスはパンを取り、賛美の祈りを唱えて、それを裂き弟子たちに与えて言われた。「取って食べよ。これはわたしの体である。」", gal: "処刑される前日の夜、弟子たちとの最後のご飯。パンを「これが私の体だよ」、ワインを「これが私の血だよ」って言って分け合ったの🍷 今のキリスト教のミサってこれが起源なんだって。最後の夜にこんな深い意味のある食事するの、エモすぎて無理😭" },
+      { day: "裏切りと逮捕", icon: "🪙", original: "銀貨三十枚でイエスを引き渡すことに決めた。", gal: "弟子のユダが「銀貨30枚でイエスを売ります」って当局に持ちかけたの😱 銀貨30枚って現代換算で数万円くらいらしくて、親友をそんな値段で売るの？！ってなるよね。しかも合図は「キスをした人がイエスです」っていうやり方で。裏切り方が陰湿すぎる案件。" },
+      { day: "十字架", icon: "✝️", original: "イエスは大声で叫んで、息を引き取られた。そのとき、神殿の幕が上から下まで真っ二つに裂けた。", gal: "「十字架にかけろ！」って群衆に言われて処刑されたの😢 しかも最後に「神様、なんで見捨てるの」って叫んだらしくて...神様の子なのに最後の最後にこんな孤独な思いをするって、考えたら泣けてくる。イエスが死んだ瞬間に神殿の分厚い幕が真っ二つに裂けたって、世界が悲しんだみたいでエモすぎる😭" },
+      { day: "三日後に復活", icon: "🌅", original: "天使は女たちに言った。「あなたがたが十字架につけられたイエスを捜しているのは知っています。あの方はここにはおられません。復活されたのです。」", gal: "処刑されて3日後、お墓に行ったら空っぽ！！天使が「もういないよ、復活したよ」って😱 「えっ待って！？」ってなってる女性たちのとこにイエス本人が現れて「こんにちは」って。え、普通に怖いけど感動でもある😭 これがイースター（復活祭）の起源で、世界中でお祝いしてる理由がこれなんだって！" },
+      { day: "最後のメッセージ", icon: "🌍", original: "イエスは言われた。「わたしは世の終わりまで、いつもあなたがたと共にいる。」", gal: "最後に弟子たちに「世界中に私のことを伝えてほしい、そしてずっと一緒にいるよ」って言って空に昇っていったの🌤️ 2000年後も世界中で信じてる人がいるって、このメッセージ本当に届いてるじゃん✨ 「ずっと一緒にいる」って言葉、今の私たちにも言ってくれてる気がしてくるよね。" },
+    ],
+  },
 ];
 
-const GLITTER = ["✦","★","✿","♡","☆","✪","♥","✶","⊹","✸","❋","◈"];
+const BOOKS = [
+  { id: "genesis", label: "Book Ⅰ", name: "創世記", sub: "人類のはじまり", emoji: "🌍", color: "#ff6ec7", shadow: "#cc1177", bg: "linear-gradient(135deg,#fff0f9,#ffe0f5)", bookIds: [1,2,3,4] },
+  { id: "matthew", label: "Book Ⅱ", name: "マタイ福音書", sub: "イエスの物語", emoji: "✝️", color: "#3b82f6", shadow: "#1d4ed8", bg: "linear-gradient(135deg,#eff6ff,#dbeafe)", bookIds: [5,6,7] },
+];
 
+const WISDOMS = {
+  1: "この世界って神様が7日で作ったの！？しかも私たちは神のかたちに作られてるって。自己肯定感爆上がりじゃん✨",
+  2: "「やっちゃダメ」って言われるとやりたくなるの、アダムとイブの時代から変わってないじゃん笑 人間ってずっとこんな感じなんだね。",
+  3: "虹を見るたびに神様との約束を思い出すって、なんかエモすぎない？🌈 今日から虹の見方変わりそう。",
+  4: "言語がバラバラになったのって神様のせいだったの！？翻訳ツールを発明した人たち、実は神様の計画を逆行させてるんだけど笑",
+  5: "馬小屋で生まれて、星に導かれて博士たちが会いに来て...イエスの誕生って映画より映画みたいじゃん🌟 どんな場所に生まれても関係ないってメッセージ、今も刺さりすぎる。",
+  6: "目を治したり嵐止めたり水の上歩いたり、イエスのスペックが高すぎる😂 でも全部「信じること」がキーになってるの、なんか深くない？信じる力って本当にすごいのかも✨",
+  7: "裏切られて、処刑されて、それでも「ずっと一緒にいる」って言い残して復活したイエス。2000年後も世界中で信じてる人がいるって、このストーリー本物すぎる😭 聖書読んだことなかったけど、なんか泣けてきた。",
+};
+
+const GLITTER = ["✦","★","✿","♡","☆","✪","♥","✶","⊹","✸","❋","◈"];
 function Glitter() {
   const [items] = useState(() =>
     Array.from({ length: 22 }, (_, i) => ({
-      id: i,
-      char: GLITTER[i % GLITTER.length],
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 13 + 7,
-      dur: Math.random() * 3 + 2,
-      delay: Math.random() * 4,
+      id: i, char: GLITTER[i % GLITTER.length],
+      x: Math.random() * 100, y: Math.random() * 100,
+      size: Math.random() * 13 + 7, dur: Math.random() * 3 + 2, delay: Math.random() * 4,
       color: ["#ff6ec7","#ff9de2","#ffb3e6","#e040fb","#fff","#ffec80","#c084fc","#f9a8d4"][i % 8],
     }))
   );
-  return (
-    <>
-      {items.map(g => (
-        <div key={g.id} style={{
-          position: "fixed", left: `${g.x}%`, top: `${g.y}%`,
-          fontSize: g.size, color: g.color, pointerEvents: "none", zIndex: 1,
-          animation: `glitterFloat ${g.dur}s ease-in-out ${g.delay}s infinite`,
-          textShadow: `0 0 8px ${g.color}`,
-          userSelect: "none",
-        }}>{g.char}</div>
-      ))}
-    </>
-  );
+  return <>{items.map(g => (
+    <div key={g.id} style={{ position:"fixed", left:`${g.x}%`, top:`${g.y}%`, fontSize:g.size, color:g.color, pointerEvents:"none", zIndex:1, animation:`glitterFloat ${g.dur}s ease-in-out ${g.delay}s infinite`, textShadow:`0 0 8px ${g.color}`, userSelect:"none" }}>{g.char}</div>
+  ))}</>;
 }
 
 export default function App() {
-  const [screen, setScreen] = useState("home");
+  const [screen, setScreen] = useState("top");
+  const [selectedBook, setSelectedBook] = useState(null);
   const [selectedEpisode, setSelectedEpisode] = useState(null);
   const [currentScene, setCurrentScene] = useState(0);
   const [showOriginal, setShowOriginal] = useState(false);
   const [completedEpisodes, setCompletedEpisodes] = useState([]);
   const [animating, setAnimating] = useState(false);
 
+  const goTop = () => { setScreen("top"); setSelectedBook(null); };
+  const goBook = (book) => { setSelectedBook(book); setScreen("home"); };
   const selectEpisode = (ep) => { setSelectedEpisode(ep); setCurrentScene(0); setShowOriginal(false); setScreen("read"); };
   const nextScene = () => {
     if (currentScene < selectedEpisode.content.length - 1) {
@@ -107,34 +142,35 @@ export default function App() {
 
   const scene = selectedEpisode?.content[currentScene];
   const progress = selectedEpisode ? ((currentScene + 1) / selectedEpisode.content.length) * 100 : 0;
+  const bookEpisodes = selectedBook ? episodes.filter(e => selectedBook.bookIds.includes(e.id)) : [];
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(160deg,#ffe0f5 0%,#ffc8ee 35%,#ffb0e8 65%,#ffd6f0 100%)", fontFamily: "sans-serif", color: "#1a0010", position: "relative", overflow: "hidden" }}>
+    <div style={{ minHeight:"100vh", background:"linear-gradient(160deg,#ffe0f5 0%,#ffc8ee 35%,#ffb0e8 65%,#ffd6f0 100%)", fontFamily:"sans-serif", color:"#1a0010", position:"relative", overflow:"hidden" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans+JP:wght@400;700;900&display=swap');
-        * { box-sizing: border-box; }
+        @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap');
+        * { box-sizing:border-box; }
         @keyframes glitterFloat { 0%,100%{transform:translateY(0) rotate(0deg) scale(1);opacity:.7} 33%{transform:translateY(-12px) rotate(15deg) scale(1.15);opacity:1} 66%{transform:translateY(-6px) rotate(-10deg) scale(.9);opacity:.8} }
         @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
         @keyframes popIn { from{transform:scale(.85);opacity:0} to{transform:scale(1);opacity:1} }
         @keyframes slideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
         @keyframes heartbeat { 0%,100%{transform:scale(1)} 15%{transform:scale(1.18)} 30%{transform:scale(1)} }
         @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
-        .bounce { animation: bounce 2s ease-in-out infinite; }
-        .pop { animation: popIn .35s cubic-bezier(.34,1.56,.64,1) forwards; }
-        .heartbeat { animation: heartbeat 1.5s ease infinite; }
+        .bounce { animation:bounce 2s ease-in-out infinite; }
+        .pop { animation:popIn .35s cubic-bezier(.34,1.56,.64,1) forwards; }
+        .heartbeat { animation:heartbeat 1.5s ease infinite; }
+        .gal-title { font-family:'Zen Maru Gothic',sans-serif; font-weight:900; background:linear-gradient(135deg,#ff3da0,#ff6ec7,#e040fb,#ff9de2,#ff3da0); background-size:300% auto; animation:shimmer 3s linear infinite; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
         .gal-card { background:white; border:3px solid #ff6ec7; border-radius:20px; box-shadow:4px 4px 0 #ff6ec7,0 8px 24px rgba(255,110,199,.2); position:relative; transition:transform .2s,box-shadow .2s; cursor:pointer; }
         .gal-card:hover { transform:translateY(-3px) rotate(.4deg); box-shadow:6px 6px 0 #ff6ec7,0 14px 32px rgba(255,110,199,.3); }
-        .sticker { display:inline-block; padding:3px 11px; border-radius:20px; font-weight:900; font-size:.7rem; border:2px solid; letter-spacing:.02em; transform:rotate(-2deg); box-shadow:2px 2px 0 currentColor; }
-        .btn-pink { background:linear-gradient(135deg,#ff6ec7,#ff3da0); border:3px solid #cc1177; border-radius:50px; padding:14px 28px; color:white; font-family:'Fredoka One',cursive; font-size:1.05rem; cursor:pointer; transition:all .15s; box-shadow:0 4px 0 #cc1177,0 6px 16px rgba(255,61,160,.3); letter-spacing:.05em; }
+        .sticker { display:inline-block; padding:3px 11px; border-radius:20px; font-weight:900; font-size:.7rem; border:2px solid; letter-spacing:.02em; transform:rotate(-2deg); box-shadow:2px 2px 0 currentColor; font-family:'Zen Maru Gothic',sans-serif; }
+        .btn-pink { background:linear-gradient(135deg,#ff6ec7,#ff3da0); border:3px solid #cc1177; border-radius:50px; padding:14px 28px; color:white; font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:1.05rem; cursor:pointer; transition:all .15s; box-shadow:0 4px 0 #cc1177,0 6px 16px rgba(255,61,160,.3); letter-spacing:.05em; }
         .btn-pink:hover { transform:translateY(2px); box-shadow:0 2px 0 #cc1177; }
         .btn-pink:active { transform:translateY(4px); box-shadow:none; }
-        .btn-white { background:white; border:3px solid #ff6ec7; border-radius:50px; padding:12px 24px; color:#ff3da0; font-family:'Fredoka One',cursive; font-size:1rem; cursor:pointer; transition:all .15s; box-shadow:0 4px 0 #ff6ec7; }
+        .btn-white { background:white; border:3px solid #ff6ec7; border-radius:50px; padding:12px 24px; color:#ff3da0; font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:1rem; cursor:pointer; transition:all .15s; box-shadow:0 4px 0 #ff6ec7; }
         .btn-white:hover { transform:translateY(2px); box-shadow:0 2px 0 #ff6ec7; }
         .progress-track { height:12px; background:rgba(255,255,255,.5); border-radius:20px; border:2px solid #ff6ec7; overflow:hidden; }
         .progress-fill { height:100%; background:linear-gradient(90deg,#ff6ec7,#ff3da0,#ff9de2,#ff6ec7); background-size:200% auto; animation:shimmer 2s linear infinite; border-radius:20px; transition:width .5s cubic-bezier(.34,1.2,.64,1); }
         .scene-wrap { transition:opacity .22s,transform .22s; }
         .scene-wrap.out { opacity:0; transform:translateX(16px); }
-        .title-shimmer { font-family:'Fredoka One',cursive; background:linear-gradient(135deg,#ff3da0,#ff6ec7,#e040fb,#ff9de2,#ff3da0); background-size:300% auto; animation:shimmer 3s linear infinite; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
         .dot-bg { position:fixed; inset:0; z-index:0; pointer-events:none; background-image:radial-gradient(circle,rgba(255,110,199,.22) 1px,transparent 1px); background-size:24px 24px; }
         ::-webkit-scrollbar { width:6px; }
         ::-webkit-scrollbar-track { background:#ffd6f0; }
@@ -144,102 +180,143 @@ export default function App() {
       <div className="dot-bg" />
       <Glitter />
 
-      {/* ══ HOME ══ */}
-      {screen === "home" && (
-        <div style={{ maxWidth: 480, margin: "0 auto", padding: "32px 18px 100px", position: "relative", zIndex: 2 }}>
-          <div style={{ textAlign: "center", marginBottom: 32 }}>
-            <div style={{ fontFamily: "'Fredoka One'", fontSize: "0.7rem", color: "#ff9de2", letterSpacing: "0.2em", marginBottom: 6 }}>♡ ♡ ♡ THE HOLY SCRIPTURE ♡ ♡ ♡</div>
-            <h1 className="title-shimmer bounce" style={{ fontSize: "3rem", margin: "0 0 2px", lineHeight: 1.1 }}>ギャル聖書</h1>
-            <div style={{ fontFamily: "'Fredoka One'", fontSize: "1rem", color: "#e040fb", marginBottom: 8 }}>GAL ✦ BIBLE 📖💅</div>
-            <p style={{ fontFamily: "'Noto Sans JP'", fontSize: "0.82rem", color: "#c026a0", margin: 0 }}>聖書をギャル語でたのしく学ぼ〜！ ✨</p>
-            <div style={{ display: "flex", justifyContent: "center", gap: 10, marginTop: 16, flexWrap: "wrap" }}>
+      {/* ══ TOP（書選択） ══ */}
+      {screen === "top" && (
+        <div style={{ maxWidth:480, margin:"0 auto", padding:"40px 18px 80px", position:"relative", zIndex:2 }}>
+          <div style={{ textAlign:"center", marginBottom:36 }}>
+            <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"0.7rem", color:"#ff9de2", letterSpacing:"0.2em", marginBottom:8 }}>♡ ♡ ♡ THE HOLY SCRIPTURE ♡ ♡ ♡</div>
+            <h1 className="gal-title bounce" style={{ fontSize:"3.2rem", margin:"0 0 4px", lineHeight:1.1 }}>ギャル聖書</h1>
+            <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"1rem", color:"#e040fb", marginBottom:8, fontWeight:700 }}>GAL ✦ BIBLE 📖💅</div>
+            <p style={{ fontFamily:"'Noto Sans JP'", fontSize:"0.82rem", color:"#c026a0", margin:"0 0 28px" }}>聖書をギャル語でたのしく学ぼ〜！ ✨</p>
+            <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"0.95rem", color:"#ff6ec7", fontWeight:700, marginBottom:6 }}>📚 よみたい書をえらんでね！</div>
+          </div>
+
+          <div style={{ display:"flex", flexDirection:"column", gap:18 }}>
+            {BOOKS.map((book, i) => {
+              const bookEps = episodes.filter(e => book.bookIds.includes(e.id));
+              const doneCount = bookEps.filter(e => completedEpisodes.includes(e.id)).length;
+              return (
+                <div key={book.id} onClick={() => goBook(book)}
+                  style={{ background:book.bg, border:`3px solid ${book.color}`, borderRadius:24, padding:"24px 20px", cursor:"pointer", boxShadow:`5px 5px 0 ${book.shadow}`, position:"relative", transition:"transform .2s,box-shadow .2s", animation:`slideUp .4s ease ${i*0.1}s both` }}
+                  onMouseEnter={e => { e.currentTarget.style.transform="translateY(-3px)"; e.currentTarget.style.boxShadow=`7px 7px 0 ${book.shadow}`; }}
+                  onMouseLeave={e => { e.currentTarget.style.transform=""; e.currentTarget.style.boxShadow=`5px 5px 0 ${book.shadow}`; }}
+                >
+                  <div style={{ position:"absolute", top:-10, right:18, fontSize:"1.1rem", color:book.color, animation:"heartbeat 2s ease infinite" }}>♥</div>
+                  <div style={{ display:"flex", alignItems:"center", gap:16 }}>
+                    <div style={{ width:72, height:72, borderRadius:20, background:`${book.color}22`, border:`3px solid ${book.color}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:"2.2rem", boxShadow:`3px 3px 0 ${book.color}`, flexShrink:0 }}>{book.emoji}</div>
+                    <div style={{ flex:1 }}>
+                      <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"0.78rem", color:book.color, fontWeight:900, letterSpacing:"0.1em", marginBottom:4 }}>{book.label}</div>
+                      <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"1.3rem", fontWeight:900, color:"#1a0010", marginBottom:2 }}>{book.name}</div>
+                      <div style={{ fontFamily:"'Noto Sans JP'", fontSize:"0.8rem", color:"#888", marginBottom:8 }}>{book.sub}</div>
+                      <div style={{ display:"flex", gap:8, alignItems:"center" }}>
+                        <span style={{ fontSize:"0.7rem", background:"white", color:book.color, border:`1px solid ${book.color}`, borderRadius:8, padding:"2px 10px", fontWeight:700, fontFamily:"'Zen Maru Gothic'" }}>{bookEps.length}エピソード</span>
+                        {doneCount > 0 && <span style={{ fontSize:"0.7rem", background:"#f0fff4", color:"#22c55e", border:"1px solid #22c55e", borderRadius:8, padding:"2px 10px", fontWeight:700, fontFamily:"'Zen Maru Gothic'" }}>✓ {doneCount}/{bookEps.length} 読了</span>}
+                      </div>
+                    </div>
+                    <div style={{ fontSize:"1.6rem", color:book.color }}>›</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ textAlign:"center", marginTop:32, fontFamily:"'Zen Maru Gothic'", fontSize:"0.8rem", color:"#ffb3e6", fontWeight:700 }}>✦ ✦ ✦ 続々追加予定だよ！待っててね ✦ ✦ ✦</div>
+        </div>
+      )}
+
+      {/* ══ HOME（エピソード一覧） ══ */}
+      {screen === "home" && selectedBook && (
+        <div style={{ maxWidth:480, margin:"0 auto", padding:"0 0 100px", position:"relative", zIndex:2 }}>
+          {/* ヘッダー */}
+          <div style={{ padding:"20px 18px 16px", textAlign:"center", position:"relative" }}>
+            <button onClick={goTop} style={{ position:"absolute", left:18, top:22, background:"white", border:`2px solid ${selectedBook.color}`, borderRadius:"50%", width:36, height:36, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer", color:selectedBook.color, fontSize:"1.1rem", boxShadow:`2px 2px 0 ${selectedBook.color}` }}>‹</button>
+            <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"0.7rem", color:"#ff9de2", letterSpacing:"0.2em", marginBottom:4 }}>♡ ♡ ♡ THE HOLY SCRIPTURE ♡ ♡ ♡</div>
+            <h1 className="gal-title bounce" style={{ fontSize:"2.6rem", margin:"0 0 2px", lineHeight:1.1 }}>ギャル聖書</h1>
+            <div style={{ display:"inline-block", background:selectedBook.bg, border:`2px solid ${selectedBook.color}`, borderRadius:14, padding:"4px 16px", marginTop:8, boxShadow:`3px 3px 0 ${selectedBook.color}` }}>
+              <span style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"0.78rem", color:selectedBook.color, fontWeight:900 }}>{selectedBook.label} </span>
+              <span style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"0.9rem", color:"#1a0010", fontWeight:900 }}>{selectedBook.name}</span>
+              <span style={{ fontFamily:"'Noto Sans JP'", fontSize:"0.72rem", color:"#888", marginLeft:6 }}>— {selectedBook.sub}</span>
+            </div>
+            <div style={{ display:"flex", justifyContent:"center", gap:10, marginTop:14, flexWrap:"wrap" }}>
               {[
-                { val: `${episodes.length}本`, label: "エピソード", c: "#ff6ec7" },
-                { val: `${completedEpisodes.length}本`, label: "よんだ✓", c: "#a855f7" },
-                { val: "創世記", label: "Book I", c: "#f59e0b" },
-              ].map((s, i) => (
-                <div key={i} style={{ background: "white", border: `2px solid ${s.c}`, borderRadius: 12, padding: "8px 14px", textAlign: "center", boxShadow: `3px 3px 0 ${s.c}` }}>
-                  <div style={{ fontFamily: "'Fredoka One'", fontSize: "1.1rem", color: s.c }}>{s.val}</div>
-                  <div style={{ fontSize: "0.62rem", color: "#aaa", fontWeight: 700 }}>{s.label}</div>
+                { val:`${bookEpisodes.length}本`, label:"エピソード", c:selectedBook.color },
+                { val:`${bookEpisodes.filter(e=>completedEpisodes.includes(e.id)).length}本`, label:"よんだ✓", c:"#22c55e" },
+              ].map((s,i) => (
+                <div key={i} style={{ background:"white", border:`2px solid ${s.c}`, borderRadius:12, padding:"6px 14px", textAlign:"center", boxShadow:`3px 3px 0 ${s.c}` }}>
+                  <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"1.1rem", color:s.c, fontWeight:900 }}>{s.val}</div>
+                  <div style={{ fontSize:"0.62rem", color:"#aaa", fontWeight:700 }}>{s.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            {episodes.map((ep, i) => (
+          <div style={{ display:"flex", flexDirection:"column", gap:14, padding:"0 18px" }}>
+            {bookEpisodes.map((ep,i) => (
               <div key={ep.id} className="gal-card" onClick={() => selectEpisode(ep)}
-                style={{ padding: "18px 18px 16px", animation: `slideUp .4s ease ${i * 0.07}s both` }}>
-                <div style={{ position: "absolute", top: -8, right: 14, fontSize: "1rem", color: ep.stickerColor, animation: "heartbeat 2s ease infinite" }}>♥</div>
-                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  <div style={{ width: 62, height: 62, borderRadius: 16, flexShrink: 0, background: `linear-gradient(135deg,${ep.stickerColor}22,${ep.stickerColor}44)`, border: `2px solid ${ep.stickerColor}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.9rem", boxShadow: `3px 3px 0 ${ep.stickerColor}` }}>{ep.emoji}</div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 5, flexWrap: "wrap" }}>
-                      <span className="sticker" style={{ color: ep.stickerColor, borderColor: ep.stickerColor }}>{ep.sticker}</span>
-                      {completedEpisodes.includes(ep.id) && <span className="sticker" style={{ color: "#22c55e", borderColor: "#22c55e" }}>✓ 読了！</span>}
+                style={{ padding:"18px 18px 16px", animation:`slideUp .4s ease ${i*0.07}s both`, borderColor:ep.stickerColor, boxShadow:`4px 4px 0 ${ep.stickerColor}` }}>
+                <div style={{ position:"absolute", top:-8, right:14, fontSize:"1rem", color:ep.stickerColor, animation:"heartbeat 2s ease infinite" }}>♥</div>
+                <div style={{ display:"flex", alignItems:"center", gap:14 }}>
+                  <div style={{ width:62, height:62, borderRadius:16, flexShrink:0, background:`${ep.stickerColor}22`, border:`2px solid ${ep.stickerColor}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:"1.9rem", boxShadow:`3px 3px 0 ${ep.stickerColor}` }}>{ep.emoji}</div>
+                  <div style={{ flex:1, minWidth:0 }}>
+                    <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:5, flexWrap:"wrap" }}>
+                      <span className="sticker" style={{ color:ep.stickerColor, borderColor:ep.stickerColor }}>{ep.sticker}</span>
+                      {completedEpisodes.includes(ep.id) && <span className="sticker" style={{ color:"#22c55e", borderColor:"#22c55e" }}>✓ 読了！</span>}
                     </div>
-                    <div style={{ fontFamily: "'Fredoka One'", fontSize: "1.15rem", color: "#1a0010", marginBottom: 3 }}>{ep.title}</div>
-                    <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-                      <span style={{ fontSize: "0.7rem", color: "#bbb" }}>{ep.verse}</span>
-                      <span style={{ fontSize: "0.68rem", background: "#fff0f9", color: "#ff6ec7", border: "1px solid #ff6ec7", borderRadius: 8, padding: "1px 8px", fontWeight: 700 }}>{ep.difficulty}</span>
-                      <span style={{ fontSize: "0.68rem", color: "#ccc" }}>{ep.content.length}シーン</span>
+                    <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"1.1rem", fontWeight:900, color:"#1a0010", marginBottom:3 }}>{ep.title}</div>
+                    <div style={{ display:"flex", gap:8, alignItems:"center", flexWrap:"wrap" }}>
+                      <span style={{ fontSize:"0.7rem", color:"#bbb" }}>{ep.verse}</span>
+                      <span style={{ fontSize:"0.68rem", background:"#fff0f9", color:ep.stickerColor, border:`1px solid ${ep.stickerColor}`, borderRadius:8, padding:"1px 8px", fontWeight:700, fontFamily:"'Zen Maru Gothic'" }}>{ep.difficulty}</span>
+                      <span style={{ fontSize:"0.68rem", color:"#ccc" }}>{ep.content.length}シーン</span>
                     </div>
                   </div>
-                  <div style={{ fontSize: "1.4rem", color: "#ff6ec7" }}>›</div>
+                  <div style={{ fontSize:"1.4rem", color:ep.stickerColor }}>›</div>
                 </div>
               </div>
             ))}
           </div>
-          <div style={{ textAlign: "center", marginTop: 28, fontFamily: "'Fredoka One'", fontSize: "0.8rem", color: "#ffb3e6" }}>✦ ✦ ✦ 続々追加予定だよ！待っててね ✦ ✦ ✦</div>
+          <div style={{ textAlign:"center", marginTop:28, fontFamily:"'Zen Maru Gothic'", fontSize:"0.8rem", color:"#ffb3e6", fontWeight:700 }}>✦ ✦ ✦ 続々追加予定だよ！待っててね ✦ ✦ ✦</div>
         </div>
       )}
 
       {/* ══ READ ══ */}
       {screen === "read" && selectedEpisode && scene && (
-        <div style={{ maxWidth: 480, margin: "0 auto", padding: "0 0 120px", position: "relative", zIndex: 2 }}>
-          <div style={{ padding: "14px 16px", display: "flex", alignItems: "center", gap: 10, background: "rgba(255,224,245,0.96)", backdropFilter: "blur(8px)", borderBottom: "3px solid #ff6ec7", position: "sticky", top: 0, zIndex: 10 }}>
-            <button onClick={() => setScreen("home")} style={{ background: "white", border: "2px solid #ff6ec7", borderRadius: "50%", width: 36, height: 36, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "#ff6ec7", fontSize: "1.1rem", fontFamily: "'Fredoka One'", boxShadow: "2px 2px 0 #ff6ec7" }}>‹</button>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontFamily: "'Fredoka One'", fontSize: "1rem", color: "#c026a0" }}>{selectedEpisode.title}</div>
-              <div style={{ fontSize: "0.63rem", color: "#ff9de2" }}>{selectedEpisode.verse}</div>
+        <div style={{ maxWidth:480, margin:"0 auto", padding:"0 0 120px", position:"relative", zIndex:2 }}>
+          <div style={{ padding:"14px 16px", display:"flex", alignItems:"center", gap:10, background:"rgba(255,224,245,0.96)", backdropFilter:"blur(8px)", borderBottom:"3px solid #ff6ec7", position:"sticky", top:0, zIndex:10 }}>
+            <button onClick={() => setScreen("home")} style={{ background:"white", border:"2px solid #ff6ec7", borderRadius:"50%", width:36, height:36, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer", color:"#ff6ec7", fontSize:"1.1rem", boxShadow:"2px 2px 0 #ff6ec7" }}>‹</button>
+            <div style={{ flex:1 }}>
+              <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"1rem", fontWeight:900, color:"#c026a0" }}>{selectedEpisode.title}</div>
+              <div style={{ fontSize:"0.63rem", color:"#ff9de2" }}>{selectedEpisode.verse}</div>
             </div>
-            <div style={{ background: "#ff6ec7", color: "white", borderRadius: 20, padding: "4px 12px", fontFamily: "'Fredoka One'", fontSize: "0.8rem" }}>{currentScene + 1} / {selectedEpisode.content.length}</div>
+            <div style={{ background:"#ff6ec7", color:"white", borderRadius:20, padding:"4px 12px", fontFamily:"'Zen Maru Gothic'", fontSize:"0.8rem", fontWeight:900 }}>{currentScene+1} / {selectedEpisode.content.length}</div>
           </div>
-
-          <div style={{ padding: "10px 18px 0" }}>
-            <div className="progress-track"><div className="progress-fill" style={{ width: `${progress}%` }} /></div>
+          <div style={{ padding:"10px 18px 0" }}>
+            <div className="progress-track"><div className="progress-fill" style={{ width:`${progress}%` }} /></div>
           </div>
-
-          <div className={`scene-wrap ${animating ? "out" : ""}`} style={{ padding: "20px 18px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
-              <div style={{ width: 56, height: 56, borderRadius: 16, flexShrink: 0, background: "white", border: "3px solid #ff6ec7", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.7rem", boxShadow: "3px 3px 0 #ff6ec7" }}>{scene.icon}</div>
+          <div className={`scene-wrap ${animating?"out":""}`} style={{ padding:"20px 18px" }}>
+            <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:18 }}>
+              <div style={{ width:56, height:56, borderRadius:16, flexShrink:0, background:"white", border:"3px solid #ff6ec7", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"1.7rem", boxShadow:"3px 3px 0 #ff6ec7" }}>{scene.icon}</div>
               <div>
-                <div style={{ fontSize: "0.63rem", color: "#ff9de2", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 2 }}>✦ Scene {currentScene + 1} ✦</div>
-                <div style={{ fontFamily: "'Fredoka One'", fontSize: "1.05rem", color: "#c026a0" }}>{scene.day}</div>
+                <div style={{ fontSize:"0.63rem", color:"#ff9de2", fontWeight:700, letterSpacing:"0.1em", marginBottom:2 }}>✦ Scene {currentScene+1} ✦</div>
+                <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"1.05rem", fontWeight:900, color:"#c026a0" }}>{scene.day}</div>
               </div>
             </div>
-
-            <div style={{ background: "white", border: "3px solid #ff6ec7", borderRadius: 20, padding: "20px", marginBottom: 14, boxShadow: "4px 4px 0 #ff6ec7" }}>
-              <div style={{ display: "inline-block", background: "linear-gradient(135deg,#ff6ec7,#e040fb)", color: "white", borderRadius: 20, padding: "3px 14px", fontFamily: "'Fredoka One'", fontSize: "0.78rem", marginBottom: 12, boxShadow: "2px 2px 0 #cc1177" }}>💅 ギャル語バージョン</div>
-              <p style={{ fontFamily: "'Noto Sans JP'", fontSize: "0.95rem", lineHeight: 1.85, margin: 0, color: "#1a0010" }}>{scene.gal}</p>
+            <div style={{ background:"white", border:"3px solid #ff6ec7", borderRadius:20, padding:"20px", marginBottom:14, boxShadow:"4px 4px 0 #ff6ec7" }}>
+              <div style={{ display:"inline-block", background:"linear-gradient(135deg,#ff6ec7,#e040fb)", color:"white", borderRadius:20, padding:"3px 14px", fontFamily:"'Zen Maru Gothic'", fontSize:"0.78rem", fontWeight:900, marginBottom:12, boxShadow:"2px 2px 0 #cc1177" }}>💅 ギャル語バージョン</div>
+              <p style={{ fontFamily:"'Noto Sans JP'", fontSize:"0.95rem", lineHeight:1.85, margin:0, color:"#1a0010" }}>{scene.gal}</p>
             </div>
-
-            <button onClick={() => setShowOriginal(!showOriginal)} style={{ background: "none", border: "2px dashed #ffb3e6", borderRadius: 12, padding: "8px 16px", color: "#ff9de2", fontSize: "0.78rem", cursor: "pointer", marginBottom: 12, fontFamily: "'Fredoka One'" }}>
+            <button onClick={() => setShowOriginal(!showOriginal)} style={{ background:"none", border:"2px dashed #ffb3e6", borderRadius:12, padding:"8px 16px", color:"#ff9de2", fontSize:"0.78rem", cursor:"pointer", marginBottom:12, fontFamily:"'Zen Maru Gothic'", fontWeight:700 }}>
               {showOriginal ? "▲ 原文を隠す" : "▼ 原文を見る（聖書より）📖"}
             </button>
-
             {showOriginal && (
-              <div className="pop" style={{ background: "#fff8fd", border: "2px solid #ffb3e6", borderRadius: 16, padding: "16px 18px" }}>
-                <div style={{ fontFamily: "'Fredoka One'", fontSize: "0.72rem", color: "#ffb3e6", marginBottom: 8 }}>📖 原文（口語訳）</div>
-                <p style={{ fontFamily: "'Noto Sans JP'", fontSize: "0.85rem", color: "#c084c0", lineHeight: 1.75, margin: 0, fontStyle: "italic" }}>{scene.original}</p>
+              <div className="pop" style={{ background:"#fff8fd", border:"2px solid #ffb3e6", borderRadius:16, padding:"16px 18px" }}>
+                <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"0.72rem", color:"#ffb3e6", marginBottom:8, fontWeight:700 }}>📖 原文（口語訳）</div>
+                <p style={{ fontFamily:"'Noto Sans JP'", fontSize:"0.85rem", color:"#c084c0", lineHeight:1.75, margin:0, fontStyle:"italic" }}>{scene.original}</p>
               </div>
             )}
           </div>
-
-          <div style={{ position: "fixed", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "100%", maxWidth: 480, padding: "14px 18px 30px", background: "linear-gradient(to top,#ffc8ee 50%,transparent)", display: "flex", gap: 10, zIndex: 10 }}>
-            {currentScene > 0 && <button className="btn-white" onClick={prevScene} style={{ flex: 1 }}>‹ もどる</button>}
-            <button className="btn-pink" onClick={nextScene} style={{ flex: 2 }}>
-              {currentScene < selectedEpisode.content.length - 1 ? "つぎへ ›" : "よみおわった！🎉"}
+          <div style={{ position:"fixed", bottom:0, left:"50%", transform:"translateX(-50%)", width:"100%", maxWidth:480, padding:"14px 18px 30px", background:"linear-gradient(to top,#ffc8ee 50%,transparent)", display:"flex", gap:10, zIndex:10 }}>
+            {currentScene > 0 && <button className="btn-white" onClick={prevScene} style={{ flex:1 }}>‹ もどる</button>}
+            <button className="btn-pink" onClick={nextScene} style={{ flex:2 }}>
+              {currentScene < selectedEpisode.content.length-1 ? "つぎへ ›" : "よみおわった！🎉"}
             </button>
           </div>
         </div>
@@ -247,28 +324,22 @@ export default function App() {
 
       {/* ══ COMPLETE ══ */}
       {screen === "complete" && selectedEpisode && (
-        <div style={{ maxWidth: 480, margin: "0 auto", padding: "50px 20px 40px", textAlign: "center", position: "relative", zIndex: 2 }}>
-          <div className="heartbeat" style={{ fontSize: "4rem", marginBottom: 12 }}>🎉</div>
-          <h2 style={{ fontFamily: "'Fredoka One'", fontSize: "2rem", color: "#ff3da0", margin: "0 0 4px" }}>よみおわった〜！</h2>
-          <div style={{ fontFamily: "'Fredoka One'", fontSize: "1rem", color: "#e040fb", marginBottom: 20 }}>✦ 「{selectedEpisode.title}」コンプリート ✦</div>
-
-          <div style={{ background: "white", border: "3px solid #ff6ec7", borderRadius: 24, padding: "22px 20px", margin: "0 0 20px", boxShadow: "5px 5px 0 #ff6ec7", position: "relative" }}>
-            <div style={{ position: "absolute", top: -10, left: 16, fontSize: "1.2rem", color: "#ff6ec7", animation: "heartbeat 2s ease infinite" }}>♥</div>
-            <div style={{ position: "absolute", top: -10, right: 16, fontSize: "1.2rem", color: "#e040fb", animation: "heartbeat 2s ease .3s infinite" }}>♥</div>
-            <div style={{ display: "inline-block", background: "linear-gradient(135deg,#ff6ec7,#e040fb)", color: "white", borderRadius: 20, padding: "3px 16px", fontFamily: "'Fredoka One'", fontSize: "0.78rem", marginBottom: 12 }}>💅 今日のギャル的学び</div>
-            <p style={{ fontFamily: "'Noto Sans JP'", fontSize: "0.92rem", lineHeight: 1.8, color: "#1a0010", margin: 0 }}>
-              {selectedEpisode.id === 1 && "この世界って神様が7日で作ったの！？しかも私たちは神のかたちに作られてるって。自己肯定感爆上がりじゃん✨"}
-              {selectedEpisode.id === 2 && "「やっちゃダメ」って言われるとやりたくなるの、アダムとイブの時代から変わってないじゃん笑 人間ってずっとこんな感じなんだね。"}
-              {selectedEpisode.id === 3 && "虹を見るたびに神様との約束を思い出すって、なんかエモすぎない？🌈 今日から虹の見方変わりそう。"}
-              {selectedEpisode.id === 4 && "言語がバラバラになったのって神様のせいだったの！？翻訳ツールを発明した人たち、実は神様の計画を逆行させてるんだけど笑"}
-            </p>
+        <div style={{ maxWidth:480, margin:"0 auto", padding:"50px 20px 40px", textAlign:"center", position:"relative", zIndex:2 }}>
+          <div className="heartbeat" style={{ fontSize:"4rem", marginBottom:12 }}>🎉</div>
+          <h2 style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"2rem", fontWeight:900, color:"#ff3da0", margin:"0 0 4px" }}>よみおわった〜！</h2>
+          <div style={{ fontFamily:"'Zen Maru Gothic'", fontSize:"1rem", fontWeight:700, color:"#e040fb", marginBottom:20 }}>✦ 「{selectedEpisode.title}」コンプリート ✦</div>
+          <div style={{ background:"white", border:"3px solid #ff6ec7", borderRadius:24, padding:"22px 20px", margin:"0 0 20px", boxShadow:"5px 5px 0 #ff6ec7", position:"relative" }}>
+            <div style={{ position:"absolute", top:-10, left:16, fontSize:"1.2rem", color:"#ff6ec7", animation:"heartbeat 2s ease infinite" }}>♥</div>
+            <div style={{ position:"absolute", top:-10, right:16, fontSize:"1.2rem", color:"#e040fb", animation:"heartbeat 2s ease .3s infinite" }}>♥</div>
+            <div style={{ display:"inline-block", background:"linear-gradient(135deg,#ff6ec7,#e040fb)", color:"white", borderRadius:20, padding:"3px 16px", fontFamily:"'Zen Maru Gothic'", fontSize:"0.78rem", fontWeight:900, marginBottom:12 }}>💅 今日のギャル的学び</div>
+            <p style={{ fontFamily:"'Noto Sans JP'", fontSize:"0.92rem", lineHeight:1.8, color:"#1a0010", margin:0 }}>{WISDOMS[selectedEpisode.id]}</p>
           </div>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
             <button className="btn-pink" onClick={() => { setCurrentScene(0); setShowOriginal(false); setScreen("read"); }}>もう一回よむ 🔁</button>
-            <button className="btn-white" onClick={() => setScreen("home")}>ほかのエピソードへ 📖</button>
+            <button className="btn-white" onClick={() => setScreen("home")}>同じ書のエピソードへ 📖</button>
+            <button className="btn-white" onClick={goTop}>書の選択に戻る 📚</button>
           </div>
-          <div style={{ marginTop: 24, fontFamily: "'Fredoka One'", fontSize: "0.78rem", color: "#ffb3e6" }}>♡ ✦ 続きも待っててね！ ✦ ♡</div>
+          <div style={{ marginTop:24, fontFamily:"'Zen Maru Gothic'", fontSize:"0.78rem", color:"#ffb3e6", fontWeight:700 }}>♡ ✦ 続きも待っててね！ ✦ ♡</div>
         </div>
       )}
     </div>
